@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/mangosbs/static/css/main.a7a06f25.css",
+    "main.js": "/mangosbs/static/js/main.f84d2521.js",
+    "static/js/453.8616e5cf.chunk.js": "/mangosbs/static/js/453.8616e5cf.chunk.js",
+    "static/media/bgmusic.mp3": "/mangosbs/static/media/bgmusic.eeb751da5f6059dfd112.mp3",
+    "static/media/background.png": "/mangosbs/static/media/background.17d5c0b154f57a9a56cf.png",
+    "index.html": "/mangosbs/index.html",
+    "main.a7a06f25.css.map": "/mangosbs/static/css/main.a7a06f25.css.map",
+    "main.f84d2521.js.map": "/mangosbs/static/js/main.f84d2521.js.map",
+    "453.8616e5cf.chunk.js.map": "/mangosbs/static/js/453.8616e5cf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7a06f25.css",
+    "static/js/main.f84d2521.js"
+  ]
+}
