@@ -1,38 +1,343 @@
-.App {
-  text-align: center;
+/* App.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Add this to your App.css */
+.mango-hint {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #666;
+  font-size: 16px;
+  font-weight: 300;
+  opacity: 0.7;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Professional view styles */
+.professional-container {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mango-logo {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.mango-logo:hover {
+  transform: scale(1.05);
+}
+
+.mango-svg {
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+/* Chaos container */
+.chaos-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ff00ff;
+}
+
+/* Animations */
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes glitter {
+  0%, 100% { 
+    opacity: 0; 
+    transform: scale(0) rotate(0deg); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1) rotate(360deg); 
+  }
+}
+
+@keyframes megaFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  25% { 
+    transform: translateY(-30px) rotate(90deg) scale(1.2); 
+  }
+  50% { 
+    transform: translateY(-60px) rotate(180deg) scale(0.8); 
+  }
+  75% { 
+    transform: translateY(-30px) rotate(270deg) scale(1.1); 
+  }
+}
+
+@keyframes crazyShake {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  10% { transform: translateX(-10px) translateY(-5px) rotate(5deg); }
+  20% { transform: translateX(10px) translateY(5px) rotate(-5deg); }
+  30% { transform: translateX(-8px) translateY(-8px) rotate(8deg); }
+  40% { transform: translateX(8px) translateY(8px) rotate(-8deg); }
+  50% { transform: translateX(-6px) translateY(-3px) rotate(3deg); }
+  60% { transform: translateX(6px) translateY(3px) rotate(-3deg); }
+  70% { transform: translateX(-4px) translateY(-6px) rotate(6deg); }
+  80% { transform: translateX(4px) translateY(6px) rotate(-6deg); }
+  90% { transform: translateX(-2px) translateY(-1px) rotate(1deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes spinCrazy {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.5); }
+  50% { transform: rotate(180deg) scale(0.5); }
+  75% { transform: rotate(270deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes borderRainbow {
+  0% { 
+    border-color: #ff0000; 
+    box-shadow: 0 0 30px #ff0000; 
+  }
+  16% { 
+    border-color: #ff8000; 
+    box-shadow: 0 0 30px #ff8000; 
+  }
+  33% { 
+    border-color: #ffff00; 
+    box-shadow: 0 0 30px #ffff00; 
+  }
+  50% { 
+    border-color: #00ff00; 
+    box-shadow: 0 0 30px #00ff00; 
+  }
+  66% { 
+    border-color: #0080ff; 
+    box-shadow: 0 0 30px #0080ff; 
+  }
+  83% { 
+    border-color: #8000ff; 
+    box-shadow: 0 0 30px #8000ff; 
+  }
+  100% { 
+    border-color: #ff0080; 
+    box-shadow: 0 0 30px #ff0080; 
+  }
+}
+
+/* Glitter */
+.glitter-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.glitter-particle {
+  position: absolute;
+  background-color: #fde047;
+  border-radius: 50%;
+  animation: glitter 0.8s infinite;
+}
+
+/* Rainbow border */
+.rainbow-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 8px solid;
+  pointer-events: none;
+  z-index: 20;
+  animation: borderRainbow 1s linear infinite;
+}
+
+/* Chaos elements */
+.chaos-element {
+  position: fixed;
+  pointer-events: none;
+  z-index: 15;
+  animation: megaFloat 4s ease-in-out infinite, spinCrazy 2s linear infinite;
+}
+
+/* Text sizes */
+.chaos-text-9xl { font-size: 8rem; }
+.chaos-text-8xl { font-size: 6rem; }
+.chaos-text-7xl { font-size: 4.5rem; }
+.chaos-text-6xl { font-size: 3.75rem; }
+
+/* Element positions */
+.chaos-pos-1 { top: 2.5rem; left: 2.5rem; }
+.chaos-pos-2 { top: 5rem; right: 5rem; }
+.chaos-pos-3 { bottom: 2.5rem; left: 8rem; }
+.chaos-pos-4 { bottom: 8rem; right: 2.5rem; }
+.chaos-pos-5 { top: 50%; left: 5rem; }
+.chaos-pos-6 { top: 33.333333%; right: 25%; }
+.chaos-pos-7 { bottom: 25%; left: 33.333333%; }
+.chaos-pos-8 { top: 75%; right: 33.333333%; }
+.chaos-pos-9 { top: 25%; left: 50%; }
+.chaos-pos-10 { bottom: 33.333333%; right: 50%; }
+.chaos-pos-11 { top: 66.666667%; left: 25%; }
+.chaos-pos-12 { bottom: 66.666667%; right: 25%; }
+
+/* Bouncing buttons */
+.bouncing-button {
+  position: absolute;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  border: 4px solid white;
+  z-index: 30;
+  cursor: pointer;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: transform 0.1s ease;
+}
+
+.bouncing-button:hover {
+  transform: scale(1.1) !important;
+}
+
+/* Chaos text */
+.chaos-text {
+  position: fixed;
+  font-weight: bold;
+  z-index: 25;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.chaos-text-1 {
+  top: 1.25rem;
+  left: 1.25rem;
+  font-size: 2.25rem;
+  color: #ef4444;
+  text-shadow: 3px 3px 0px #000, 6px 6px 0px #fff;
+  animation: crazyShake 0.3s infinite;
+}
+
+.chaos-text-2 {
+  top: 2.5rem;
+  right: 2.5rem;
+  font-size: 3rem;
+  color: #84cc16;
+  text-shadow: 4px 4px 0px #800080;
+  animation: spinCrazy 2s linear infinite;
+}
+
+.chaos-text-3 {
+  bottom: 1.25rem;
+  left: 2.5rem;
+  font-size: 3.75rem;
+  color: #06b6d4;
+  text-shadow: 5px 5px 0px #ff0080;
+  animation: megaFloat 4s ease-in-out infinite;
+}
+
+.chaos-text-4 {
+  bottom: 2.5rem;
+  right: 5rem;
+  font-size: 1.875rem;
+  color: #fde047;
+  text-shadow: 2px 2px 0px #004080;
+  animation: crazyShake 0.3s infinite;
+}
+
+.chaos-text-5 {
+  top: 50%;
+  left: 1.25rem;
+  font-size: 2.25rem;
+  color: #ec4899;
+  text-shadow: 3px 3px 0px #000080;
+  animation: spinCrazy 2s linear infinite;
+}
+
+.chaos-text-6 {
+  top: 33.333333%;
+  right: 1.25rem;
+  font-size: 3rem;
+  color: #fb923c;
+  text-shadow: 4px 4px 0px #800000;
+  animation: megaFloat 4s ease-in-out infinite;
+}
+
+/* Background overlays */
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.2;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.bg-overlay-1 {
+  background: linear-gradient(to right, transparent, #ef4444, transparent);
+}
+
+.bg-overlay-2 {
+  background: linear-gradient(to bottom, transparent, #3b82f6, transparent);
+  opacity: 0.15;
+  animation-delay: 0.5s;
+}
+
+.bg-overlay-3 {
+  background: linear-gradient(to top right, transparent, #22c55e, transparent);
+  opacity: 0.1;
+  animation-delay: 1s;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .chaos-text-9xl { font-size: 4rem; }
+  .chaos-text-8xl { font-size: 3rem; }
+  .chaos-text-7xl { font-size: 2.5rem; }
+  .chaos-text-6xl { font-size: 2rem; }
+  
+  .chaos-text-1,
+  .chaos-text-2,
+  .chaos-text-3,
+  .chaos-text-4,
+  .chaos-text-5,
+  .chaos-text-6 {
+    font-size: 1.5rem;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  
+  .bouncing-button {
+    font-size: 12px;
+    padding: 8px 16px;
   }
 }
